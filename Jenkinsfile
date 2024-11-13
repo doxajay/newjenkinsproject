@@ -23,7 +23,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'aws-cred', region: 'us-east-1') {
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 460982569648.dkr.ecr.us-east-1.amazonaws.com'
-                    sh 'docker tag ecrnew:latest 460982569648.dkr.ecr.us-east-1.amazonaws.com/ecrnew:latest'
+                    sh 'docker tag ecrnew:latest 460982569648.dkr.ecr.us-east-1.amazonaws.com/ecrnew'
                     sh 'docker push 460982569648.dkr.ecr.us-east-1.amazonaws.com/ecrnew:latest'
                 }
             }
