@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Push Docker Image to ECR') {
             steps {
-                withAWS(credentials: 'aws-cred', region: 'us-east-1') {
+                withAWS(credentials: 'aws-cred', region: 'us-west-2') {
                     sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 460982569648.dkr.ecr.us-west-2.amazonaws.com'
                     sh 'docker tag projectjenkins:latest 460982569648.dkr.ecr.us-west-2.amazonaws.com/eksfin:latest'
                     sh 'docker push 460982569648.dkr.ecr.us-west-2.amazonaws.com/eksfin:latest'
